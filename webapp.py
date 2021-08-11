@@ -1,7 +1,9 @@
 from flask import Flask, request, render_template
 import time
 import datetime
-import arrow
+import arrow    # 날짜 시간 라이브러리 
+
+import board
 
 app = Flask(__name__)
 
@@ -15,8 +17,8 @@ def lab_temp():
 	import sys
 	import adafruit_dht
 	dhtDevice = adafruit_dht.DHT22(board.D4)
-    temperature = dhtDevice.temperature
-    humidity = dhtDevice.humidity
+	temperature = dhtDevice.temperature
+	humidity = dhtDevice.humidity
 	if humidity is not None and temperature is not None:
 		return render_template("lab_temp.html", temp=temperature, hum=humidity)
 	else:
