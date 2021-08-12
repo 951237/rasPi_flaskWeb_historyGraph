@@ -1,8 +1,11 @@
+import datetime
+
+from flask_peewee.auth import BaseUser
 from peewee import *
 
+from app import db
 
 db = SqliteDatabase('dht.db', check_same_thread=False)
-
 
 # 데이터 베이스 테이블 만들기 - 센서
 class DHTSensor(Model):
@@ -14,8 +17,6 @@ class DHTSensor(Model):
         database = db
 
 # 데이터 베이스 테이블 만들기 - 센서 읽은 값
-
-
 class SensorReading(Model):
     time = DateTimeField()  # 날짜
     name = CharField()  # 온도 / 습도
